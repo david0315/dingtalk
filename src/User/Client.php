@@ -77,6 +77,24 @@ class Client extends BaseClient
     }
 
     /**
+     * 获取部门用户详情
+     *
+     * @param int $departmentId
+     * @param int $offset
+     * @param int $size
+     * @param string $order
+     * @param string $lang
+     *
+     * @return mixed
+     */
+    public function getDetailsUsers($departmentId, $offset, $size, $order = null, $lang = null)
+    {
+        return $this->client->post('topapi/v2/user/list', [
+            'dept_id' => $departmentId, 'cursor' => $offset, 'size' => $size, 'order' => $order, 'lang' => $lang,
+        ]);
+    }
+
+    /**
      * 获取管理员列表
      *
      * @return mixed
